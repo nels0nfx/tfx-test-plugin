@@ -1,0 +1,13 @@
+{
+  "manifestVersion": 1,
+  "id": "test-plugin",
+  "version": "1.0.0",
+  "apiVersion": 1,
+  "name": "Test Plugin",
+  "description": "A tiny test: answers with a message and counts how many times it was used.",
+  "author": { "name": "nels0nfx" },
+  "permissions": ["chat.send", "storage"],
+  "commands": [
+    { "name": "tfxtest", "who": "everyone", "description": "Answers and counts how many times it was used" }
+  ]
+}
