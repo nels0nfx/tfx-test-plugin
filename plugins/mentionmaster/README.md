@@ -1,26 +1,17 @@
-# MentionMaster v1.0.0
+# MentionMaster v1.0.1
 
-TurboFex plugin that lets the bot owner configure an automatic reply when their account is mentioned in a group.
+Automatically replies with a custom message when the configured owner is mentioned in a group.
 
 ## Commands
-
-- `.mention set <message>` — save the response and bind the configuration to the command user's private TurboFex sender ID.
+- `.mention set <message>` — save your response and bind it to your TurboFex identity.
 - `.mention on` — enable automatic replies.
 - `.mention off` — disable automatic replies.
-- `.mention view` — view the saved response.
+- `.mention view` — view the saved response and status.
 - `.mention cooldown <seconds>` — set per-chat/per-sender cooldown (5–3600 seconds).
 - `.mention reset` — clear the configuration.
 
-## Important compatibility requirement
+## Compatibility
+Uses TurboFex message events and the documented `c.chat.isGroup`, `c.sender.id`, and `c.mentions` fields. Mention IDs are plugin-specific opaque IDs, so the plugin compares them directly without needing phone numbers.
 
-This plugin depends on the TurboFex message event `tfx.on('message', handler)` and on that event context exposing `c.mentions` as an array of mentioned user IDs (strings) or objects with an `id`, `userId`, or `jid` field.
-
-The published Plugin Guide does not conclusively document the message-event mention field shape. Confirm that the live runtime exposes this field before publishing or approving the plugin. If it does not, the bot's plugin event context must be extended to expose mention IDs. The plugin will otherwise install but cannot reliably detect mentions.
-
-## Permissions
-
-- `chat.send`
-- `storage`
-- `events.message`
-
-No external network access is used.
+## v1.0.1 fix
+Version 1.0.0 used colons in storage keys. TurboFex only permits letters, numbers, dots, underscores and hyphens in storage keys. This caused storage operations to fail with `plugin_error`. Version 1.0.1 uses valid dotted keys.
