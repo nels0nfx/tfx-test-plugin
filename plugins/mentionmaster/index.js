@@ -1,4 +1,4 @@
-// MentionMaster v1.0.1
+// MentionMaster v1.0.2
 // TurboFex plugin message events provide plugin-specific opaque mention IDs.
 const KEY = 'mentionmaster.';
 const DEFAULT_COOLDOWN = 30;
